@@ -1,9 +1,5 @@
 # mina-circle
-A deployment wrapper for mina based, artifact deployment. 
-
-## What's this?
-
-Using Circle CI to build assets and mina to deploy the artifact asset.
+A deployment wrapper for mina based, artifact deployment. Using Circle CI to build assets and mina to deploy the artifact asset directly on the webhost. 
 
 ## Setup
 
@@ -17,7 +13,7 @@ Example:
 ```
 general:
   artifacts:
-    - "~/artifact.tar.gz"
+    - "~/artifact_example.tar.gz"
 
 machine:
   php:
@@ -27,7 +23,7 @@ test:
   override:
     - cd static && npm install
     - ./static/node_modules/.bin/grunt ci --gruntfile static/Gruntfile.coffee
-    - tar --exclude=".git" -czvf ~/artifact.tar.gz .
+    - tar --exclude=".git" -czvf ~/artifact_example.tar.gz .
 ```
 
 ### Mina Circle
@@ -36,7 +32,7 @@ Set circle username, project and artifact.
 
     project = "your_circle_project"
     username = "your_circle_username"
-    artifact = "artifact_name.tar.gz"
+    artifact = "artifact_example.tar.gz"
 
 
 ### Mina Deploy
@@ -47,4 +43,10 @@ Setup as normal, change `deploy.rb` to website setup specifications.
 
 ## Running
 
+Your circleci token is required. 
+
 `ruby bin/mina-circle.rb -t CIRCLE_TOKEN`
+
+You can specify the environment (default is staging). 
+
+`ruby bin/mina-circle.rb -t CIRCLE_TOKEN -e production`
