@@ -1,6 +1,8 @@
 # mina-circle
 A deployment wrapper for mina based, artifact deployment. Using Circle CI to build assets and mina to deploy the artifact asset directly on the webhost. 
 
+# Look ma' No more building assets on my web server!
+
 ## Setup
 
 ### Circle
