@@ -37,7 +37,7 @@ Set circle username, project and artifact.
 
 ### Mina Deploy
 
-Setup as normal, change `deploy.rb` to website setup specifications.
+Setup as [normal](https://github.com/mina-deploy/mina), change `deploy.rb` to website setup specifications.
 
 `deploy-ee-example.rb` has basic setup for EE projects.
 
