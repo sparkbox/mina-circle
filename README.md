@@ -5,6 +5,12 @@ A deployment wrapper for mina based, artifact deployment. Using Circle CI to bui
 
 ## Setup
 
+You need to install mina before using this. 
+
+Head over to http://nadarei.co/mina/ to install and configure mina. 
+
+TL;DR: run `gem install mina` and them `mina` in your repository root.
+
 ### Circle
 
 Rename `circle-example.yml` to `circle.yml` 
