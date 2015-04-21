@@ -1,60 +1,53 @@
 # mina-circle
-A deployment wrapper for mina based, artifact deployment. Using Circle CI to build assets and mina to deploy the artifact asset directly on the webhost. 
 
-### Look ma' No more building assets on my web server!
+>Look ma' No more building assets on my web server!
+
+A plugin for [Mina](https://github.com/sparkbox/mina-circle) to deploy pre-built
+artifacts from CircleCI.
 
 ## Setup
 
-You need to install mina before using this. 
+Add `mina` and `mina-circle` to your Gemfile:
 
-Head over to http://nadarei.co/mina/ to install and configure mina. 
+    source http://rubygems.org
 
-TL;DR: run `gem install mina` and them `mina` in your repository root.
+    gem 'mina'
+    gem 'mina-circle'
 
-### Circle
+### Mina Configuration
+Once the gem is installed, require it into Mina's `config/deploy.rb`.
 
-Rename `circle-example.yml` to `circle.yml` 
+    require 'mina-circle'
 
+#### circle_token
+API access token. By default this is taken from ~/.mina-circle.yml if it exists.
+
+#### circle_user
+Your Username with CircleCI.
+
+#### circle_project
+Name by which CircleCI knows your project.
+
+#### circle_artifact
+Name that you configured CircleCI to call your build archives.
+
+#### circle_explode_command
+Command with options for decompressing the artifact archive 
+
+### CircleCI Configuration
 Change name of the asset and build path.  (gruntfile, gulp, etc)
 
-Example: 
-```
-general:
-  artifacts:
-    - "~/artifact_example.tar.gz"
+    general:
+      artifacts:
+        - "~/artifact_example.tar.gz"
 
-machine:
-  php:
-    version: 5.6.2
+    machine:
+      php:
+        version: 5.6.2
 
-test:
-  override:
-    - cd static && npm install
-    - ./static/node_modules/.bin/grunt ci --gruntfile static/Gruntfile.coffee
-    - tar --exclude=".git" -czvf ~/artifact_example.tar.gz .
-```
+    test:
+      override:
+        - cd static && npm install
+        - ./static/node_modules/.bin/grunt ci --gruntfile static/Gruntfile.coffee
+        - tar --exclude=".git" -czvf ~/artifact_example.tar.gz .
 
-### Mina Circle
-
-Set circle username, project and artifact. 
-
-    project = "your_circle_project"
-    username = "your_circle_username"
-    artifact = "artifact_example.tar.gz"
-
-
-### Mina Deploy
-
-Setup as [normal](https://github.com/mina-deploy/mina), change `deploy.rb` to website setup specifications.
-
-`deploy-ee-example.rb` has basic setup for EE projects.
-
-## Running
-
-Your circleci token is required. 
-
-`ruby bin/mina-circle.rb -t CIRCLE_TOKEN`
-
-You can specify the environment (default is staging). 
-
-`ruby bin/mina-circle.rb -t CIRCLE_TOKEN -e production`
