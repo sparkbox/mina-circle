@@ -9,7 +9,7 @@ artifacts from CircleCI.
 
 Add `mina` and `mina-circle` to your Gemfile:
 
-    source http://rubygems.org
+    source 'http://rubygems.org'
 
     gem 'mina'
     gem 'mina-circle'
