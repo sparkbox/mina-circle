@@ -39,7 +39,7 @@ Name by which CircleCI knows your project.
 Name that you configured CircleCI to call your build archives.
 
 #### circle_explode_command
-Command with options for decompressing the artifact archive 
+Command with options for decompressing the artifact archive
 
 ### CircleCI Configuration
 Change name of the asset and build path.  (gruntfile, gulp, etc)
@@ -47,10 +47,6 @@ Change name of the asset and build path.  (gruntfile, gulp, etc)
     general:
       artifacts:
         - "~/artifact_example.tar.gz"
-
-    machine:
-      php:
-        version: 5.6.2
 
     test:
       override:
