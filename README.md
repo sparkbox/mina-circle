@@ -14,6 +14,13 @@ Add `mina` and `mina-circle` to your Gemfile:
     gem 'mina'
     gem 'mina-circle'
 
+Once you have that, go to your [CircleCI Account
+Page](https://circleci.com/account/api) and create an API token (if you don't have
+one already). Create a new file named `.mina-circle.yml` in your home directory
+and add an entry for `token`:
+
+    token: <replace this with your CircleCI API token>
+
 ### Mina Configuration
 Once the gem is installed, require it into Mina's `config/deploy.rb`.
 
