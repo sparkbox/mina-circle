@@ -30,7 +30,9 @@ Page](https://circleci.com/account/api) and create an API token (if you don't ha
 one already). Create a new file named `.mina-circle.yml` in your home directory
 and add an entry for `token`:
 
-    token: <replace this with your CircleCI API token>
+    token: your_circle_ci_token
+
+If the plugin cannot find an API token the deploy will fail.
 
 ### Mina Configuration
 Once the gem is installed, require it into Mina's `config/deploy.rb` and set
