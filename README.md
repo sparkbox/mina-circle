@@ -5,6 +5,17 @@
 A plugin for [Mina](https://github.com/sparkbox/mina-circle) to deploy pre-built
 artifacts from CircleCI.
 
+## Why?
+
+Modern web applications depend on a lot of tools to prepare their static
+assets. For varying reasons, having those tools installed on a production server
+(or, really, any publicly available server) is undesirable. It adds to the
+maintenance cost of the server, it increases the time it takes to complete a
+deployment, and some tools might even be a security risk. These issues can be
+mitigated to some extent by bundling up your application in private and pushing
+that artifact into the public. This gem is a first step in making that path
+happier.
+
 ## Setup
 
 Add `mina` and `mina-circle` to your Gemfile:
