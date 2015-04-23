@@ -33,24 +33,15 @@ and add an entry for `token`:
     token: <replace this with your CircleCI API token>
 
 ### Mina Configuration
-Once the gem is installed, require it into Mina's `config/deploy.rb`.
+Once the gem is installed, require it into Mina's `config/deploy.rb` and set
+each configuration option. They are all required.
 
     require 'mina-circle'
 
-#### circle_token
-API access token. By default this is taken from ~/.mina-circle.yml if it exists.
-
-#### circle_user
-Your Username with CircleCI.
-
-#### circle_project
-Name by which CircleCI knows your project.
-
-#### circle_artifact
-Name that you configured CircleCI to call your build archives.
-
-#### circle_explode_command
-Command with options for decompressing the artifact archive
+    set :circle_user, 'username' # Your Username with CircleCI
+    set :circle_project, 'project_name' # Name by which CircleCI knows your project
+    set :circle_artifact, 'artifact.tar.gz' # Name that you configured CircleCI to call your build archives
+    set :circle_explode_command, 'tar -mzxf', # Command with options for decompressing the artifact archive
 
 ### CircleCI Configuration
 Change name of the asset and build path.  (gruntfile, gulp, etc)
