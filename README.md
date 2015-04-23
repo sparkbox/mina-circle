@@ -38,10 +38,24 @@ each configuration option. They are all required.
 
     require 'mina-circle'
 
+    # Basic Mina requirements probably live here...
+
     set :circle_user, 'username' # Your Username with CircleCI
     set :circle_project, 'project_name' # Name by which CircleCI knows your project
     set :circle_artifact, 'artifact.tar.gz' # Name that you configured CircleCI to call your build archives
     set :circle_explode_command, 'tar -mzxf', # Command with options for decompressing the artifact archive
+
+    # Other configuration probably lives here...
+
+    task :deploy => :environment do
+      deploy do
+        invoke 'circleci:deploy'
+        launch do
+          # mina-circle itself doesn't require any launch steps. Your particular
+          # app might though.
+        end
+      end
+    end
 
 ### CircleCI Configuration
 Change name of the asset and build path.  (gruntfile, gulp, etc)
