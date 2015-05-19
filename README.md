@@ -60,9 +60,7 @@ each configuration option. They are all required.
       end
     end
 
-	set :circle_explode_command, 'tar -mzxf'
-
-### CircleCI Configuration
+### CircleCI Configuration - circle.yml
 Change name of the asset and build path.  (gruntfile, gulp, etc)
 
     general:
@@ -73,7 +71,7 @@ Change name of the asset and build path.  (gruntfile, gulp, etc)
       override:
         - cd static && npm install
         - ./static/node_modules/.bin/grunt ci --gruntfile static/Gruntfile.coffee
-        - tar --exclude=".git" -czvf ~/artifact_example.tar.gz .
+        - tar --exclude=".git" --exlude="node_modules" -czvf ~/artifact_example.tar.gz .
 
 # Running
 
