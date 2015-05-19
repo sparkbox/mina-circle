@@ -1,4 +1,4 @@
-j# mina-circle
+# mina-circle
 
 >Look ma' No more building assets on my web server!
 
