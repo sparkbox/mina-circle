@@ -12,7 +12,9 @@ module MinaCircle
       base_uri = 'https://circleci.com/api/v1/project'
       base_path = "#{circle_user}/#{circle_project}/tree/master"
       url = "#{base_uri}/#{base_path}?circle-token=#{circle_token}&limit=1&filter=completed"
-      JSON.parse(open(url).read).first['build_num'].to_s
+      build_num = JSON.parse(open(url).read).first['build_num'].to_s
+      echo "[mina-circle] using build number: #{build_num}"
+      build_num
     end
 
     def build_url

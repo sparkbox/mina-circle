@@ -19,7 +19,7 @@ extend MinaCircle::Helpers
 # Name CircleCI calls your build archive
 #
 # ### circle_explode_command
-# Command with options for decompressing the artifact archive 
+# Command with options for decompressing the artifact archive
 
 set_default(:circle_token, parse_from_home_dir || fail('CircleCI token required'))
 
@@ -27,6 +27,7 @@ namespace :circleci do
 
   desc 'Downloads and explodes the archive file containing the build'
   task :deploy do
+    print "[mina-circle] Fetching: #{circle_artifact}"
     queue "curl -o #{circle_artifact} #{build_url}"
     queue "#{circle_explode_command} #{circle_artifact}"
   end

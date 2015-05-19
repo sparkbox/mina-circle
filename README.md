@@ -1,4 +1,4 @@
-# mina-circle
+j# mina-circle
 
 >Look ma' No more building assets on my web server!
 
@@ -59,16 +59,17 @@ each configuration option. They are all required.
       end
     end
 
+	set :circle_explode_command, 'tar -mzxf'
+
 ### CircleCI Configuration
 Change name of the asset and build path.  (gruntfile, gulp, etc)
 
     general:
       artifacts:
-        - "~/artifact_example.tar.gz"
+        - "~/foo.tar.gz"
 
     test:
       override:
         - cd static && npm install
         - ./static/node_modules/.bin/grunt ci --gruntfile static/Gruntfile.coffee
-        - tar --exclude=".git" -czvf ~/artifact_example.tar.gz .
-
+        - tar --exclude=".git" -czvf ~/foo.tar.gz .
