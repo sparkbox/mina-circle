@@ -13,7 +13,8 @@ module MinaCircle
       base_path = "#{circle_user}/#{circle_project}/tree/master"
       url = "#{base_uri}/#{base_path}?circle-token=#{circle_token}&limit=1&filter=completed"
       build_num = JSON.parse(open(url).read).first['build_num'].to_s
-      echo "[mina-circle] using build number: #{build_num}"
+      puts "[mina-circle] Using build number: #{build_num}"
+      puts "[mina-circle] Using username/project: #{circle_user}/#{cirlce_project}"
       build_num
     end
 
