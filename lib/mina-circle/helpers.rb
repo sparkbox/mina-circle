@@ -10,11 +10,12 @@ module MinaCircle
 
     def latest_build_number
       base_uri = 'https://circleci.com/api/v1/project'
-      base_path = "#{circle_user}/#{circle_project}/tree/master"
+      base_path = "#{circle_user}/#{circle_project}/tree/#{git_branch}"
       url = "#{base_uri}/#{base_path}?circle-token=#{circle_token}&limit=1&filter=completed"
       build_num = JSON.parse(open(url).read).first['build_num'].to_s
-      puts "[mina-circle] Using build number: #{build_num}"
+      puts "[mina-circle] Build number: #{build_num}"
       puts "[mina-circle] Using username/project: #{circle_user}/#{circle_project}"
+      puts "[mina-circle] Branch: #{git_branch}"
       build_num
     end
 
