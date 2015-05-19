@@ -44,7 +44,7 @@ each configuration option. They are all required.
 
     set :circle_user, 'username' # Your Username with CircleCI
     set :circle_project, 'project_name' # Name by which CircleCI knows your project
-    set :circle_artifact, 'artifact.tar.gz' # Name that you configured CircleCI to call your build archives
+    set :circle_artifact, 'artifact_example.tar.gz' # Name that you configured CircleCI to call your build archives
     set :circle_explode_command, 'tar -mzxf', # Command with options for decompressing the artifact archive
 
     # Other configuration probably lives here...
@@ -66,10 +66,10 @@ Change name of the asset and build path.  (gruntfile, gulp, etc)
 
     general:
       artifacts:
-        - "~/foo.tar.gz"
+        - "~/artifact_example.tar.gz"
 
     test:
       override:
         - cd static && npm install
         - ./static/node_modules/.bin/grunt ci --gruntfile static/Gruntfile.coffee
-        - tar --exclude=".git" -czvf ~/foo.tar.gz .
+        - tar --exclude=".git" -czvf ~/artifact_example.tar.gz .
