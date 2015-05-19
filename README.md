@@ -71,7 +71,7 @@ Change name of the asset and build path.  (gruntfile, gulp, etc)
       override:
         - cd static && npm install
         - ./static/node_modules/.bin/grunt ci --gruntfile static/Gruntfile.coffee
-        - tar --exclude=".git" --exlude="node_modules" -czvf ~/artifact_example.tar.gz .
+        - tar --exclude=".git" --exclude="node_modules" -czvf ~/artifact_example.tar.gz .
 
 # Running
 
