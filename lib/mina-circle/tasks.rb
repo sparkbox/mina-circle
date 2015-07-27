@@ -30,6 +30,7 @@ namespace :circleci do
     puts "[mina-circle] Fetching: #{circle_artifact}"
     queue "curl -o #{circle_artifact} #{build_url}"
     queue "#{circle_explode_command} #{circle_artifact}"
+    queue "rm #{circle_artifact}"
   end
 end
 
