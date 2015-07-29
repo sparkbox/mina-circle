@@ -2,7 +2,7 @@
 
 >Look ma' No more building assets on my web server!
 
-A plugin for [Mina](https://github.com/sparkbox/mina-circle) to deploy pre-built
+A plugin for [Mina](https://github.com/mina-deploy/mina) to deploy pre-built
 artifacts from CircleCI.
 
 ## Why?
