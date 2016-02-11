@@ -1,0 +1,7 @@
+test:
+  post:
+    - "rake gem"
+
+general:
+  artifacts:
+    - build/
