@@ -14,4 +14,7 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'mina', '~> 0.3', '>= 0.3.0'
   s.add_development_dependency 'rake', '~> 10.4', '>= 10.4.0'
+  s.add_development_dependency 'vcr', '~> 3.0', '>= 3.0.0'
+  s.add_development_dependency 'webmock', '~> 1.22', '>= 1.22.0'
+  s.add_development_dependency 'minitest', '~> 5.8', '>= 5.8.0'
 end

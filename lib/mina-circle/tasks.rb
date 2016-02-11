@@ -6,9 +6,6 @@ extend MinaCircle::Helpers
 #
 # ## Settings
 #
-# ### circle_token
-# API access token. By default this is taken from ~/.mina-circle.yml if it exists
-#
 # ### circle_user
 # user name
 #
@@ -20,8 +17,6 @@ extend MinaCircle::Helpers
 #
 # ### circle_explode_command
 # Command with options for decompressing the artifact archive
-
-set_default(:circle_token, parse_from_home_dir || fail('CircleCI token required'))
 
 namespace :circleci do
 

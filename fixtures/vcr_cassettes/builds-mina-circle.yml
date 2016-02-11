@@ -1,0 +1,197 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://circleci.com/api/v1/project/sparkbox/mina-circle/tree/master?circle-token=<CIRCLE_TOKEN>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - text/plain; charset=utf-8
+      Date:
+      - Thu, 11 Feb 2016 23:41:53 GMT
+      Server:
+      - nginx
+      Set-Cookie:
+      - ab_test_user_seed=0.2827377044595778;Expires=Sat, 11 Feb 2017 23:41:53 +0000;Path=/;Secure
+      - ring-session=XYMrUF%2FrZwywBVu0Ltcmp1qd0TBiscdb9ESyruSwFFa%2BuLSPR59O3QuRgGsgn%2Fs59ZZr55aC9dh41uaCxHgGZYsVxdDYwqMRrwiyEs3zRaDMSux1wAHIGM4NfvTm%2FuM0U9Bke23DnNBWNChtRBPJv7lr8XiBEqjBC1lJrxniJm0zw2KQw7HVo%2BaSZE9RPBo%2BmZ0J6HsvbaGfwF8XNd3lfZ0q4xwDubBkyeb0K7Sp2rA%3D--pf%2FWFrWoWrdr7fYJqbsipwLXMNtwbEvXOTfuvb%2BxP50%3D;Path=/;HttpOnly;Expires=Sat,
+        11 Feb 2017 19:57:05 +0000;Max-Age=31536000;Secure
+      Strict-Transport-Security:
+      - max-age=15724800
+      X-Circleci-Identity:
+      - i-f35a2373
+      X-Circleci-Request-Id:
+      - 2eb7c32c-1a2a-43ae-9f9f-bb94988c80cb
+      X-Circleci-Scopes:
+      - ":all"
+      - ":none"
+      - ":read-settings"
+      - ":status"
+      - ":view-builds"
+      - ":write-settings"
+      X-Frame-Options:
+      - DENY
+      X-Route:
+      - "/api/v1/project/:username/:repo/tree/:branch"
+      - ":branch"
+      - "[^,;?]+"
+      Content-Length:
+      - '1239'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        // Hello human (for machine readable JSON, use the "application/json" Accept header)
+
+        [ {
+          "compare" : "https://github.com/sparkbox/mina-circle/compare/e211c8797115...446625211e10",
+          "previous_successful_build" : null,
+          "build_parameters" : null,
+          "oss" : true,
+          "committer_date" : "2016-02-11T14:10:34-05:00",
+          "body" : "",
+          "usage_queued_at" : "2016-02-11T19:17:59.952Z",
+          "retry_of" : null,
+          "reponame" : "mina-circle",
+          "ssh_users" : [ ],
+          "build_url" : "https://circleci.com/gh/sparkbox/mina-circle/5",
+          "parallel" : 1,
+          "failed" : null,
+          "branch" : "master",
+          "username" : "sparkbox",
+          "author_date" : "2016-02-11T14:10:34-05:00",
+          "why" : "github",
+          "user" : {
+            "is_user" : false,
+            "login" : null,
+            "email" : null
+          },
+          "vcs_revision" : "446625211e10e5e5053446f59029956045b3c8f4",
+          "vcs_tag" : null,
+          "build_num" : 5,
+          "infrastructure_fail" : false,
+          "ssh_enabled" : false,
+          "committer_email" : "mike@heysparkbox.com",
+          "has_artifacts" : true,
+          "previous" : {
+            "build_num" : 1,
+            "status" : "no_tests",
+            "build_time_millis" : 38931
+          },
+          "status" : "fixed",
+          "committer_name" : "Michael Yockey",
+          "retries" : null,
+          "subject" : "chore: Configuring CircleCI to build the gem",
+          "vcs_type" : "github",
+          "timedout" : false,
+          "dont_build" : null,
+          "lifecycle" : "finished",
+          "no_dependency_cache" : null,
+          "stop_time" : "2016-02-11T19:18:58.171Z",
+          "build_time_millis" : 56883,
+          "circle_yml" : {
+            "string" : "test:\n  post:\n    - \"rake gem\"\n\ngeneral:\n  artifacts:\n    - build/\n"
+          },
+          "messages" : [ ],
+          "is_first_green_build" : false,
+          "job_name" : null,
+          "start_time" : "2016-02-11T19:18:01.288Z",
+          "canceler" : null,
+          "all_commit_details" : [ {
+            "committer_date" : "2016-02-11T14:10:34-05:00",
+            "body" : "",
+            "branch" : "master",
+            "author_date" : "2016-02-11T14:10:34-05:00",
+            "committer_email" : "mike@heysparkbox.com",
+            "commit" : "446625211e10e5e5053446f59029956045b3c8f4",
+            "committer_login" : "yock",
+            "committer_name" : "Michael Yockey",
+            "subject" : "chore: Configuring CircleCI to build the gem",
+            "commit_url" : "https://github.com/sparkbox/mina-circle/commit/446625211e10e5e5053446f59029956045b3c8f4",
+            "author_login" : "yock",
+            "author_name" : "Michael Yockey",
+            "author_email" : "mike@heysparkbox.com"
+          } ],
+          "outcome" : "success",
+          "vcs_url" : "https://github.com/sparkbox/mina-circle",
+          "author_name" : "Michael Yockey",
+          "node" : null,
+          "queued_at" : "2016-02-11T19:18:00.805Z",
+          "canceled" : false,
+          "author_email" : "mike@heysparkbox.com"
+        }, {
+          "compare" : null,
+          "previous_successful_build" : null,
+          "build_parameters" : null,
+          "oss" : true,
+          "committer_date" : null,
+          "body" : null,
+          "usage_queued_at" : "2016-02-11T17:57:20.225Z",
+          "retry_of" : null,
+          "reponame" : "mina-circle",
+          "ssh_users" : [ ],
+          "build_url" : "https://circleci.com/gh/sparkbox/mina-circle/1",
+          "parallel" : 1,
+          "failed" : null,
+          "branch" : "master",
+          "username" : "sparkbox",
+          "author_date" : null,
+          "why" : "first-build",
+          "user" : {
+            "is_user" : false,
+            "login" : "none",
+            "email" : ""
+          },
+          "vcs_revision" : "e211c87971156fb750b5c4b51f2e7c1b8f73c96b",
+          "vcs_tag" : null,
+          "build_num" : 1,
+          "infrastructure_fail" : false,
+          "ssh_enabled" : false,
+          "committer_email" : null,
+          "previous" : null,
+          "status" : "no_tests",
+          "committer_name" : null,
+          "retries" : null,
+          "subject" : null,
+          "vcs_type" : "github",
+          "timedout" : false,
+          "dont_build" : null,
+          "lifecycle" : "finished",
+          "no_dependency_cache" : null,
+          "stop_time" : "2016-02-11T17:57:47.132Z",
+          "build_time_millis" : 38931,
+          "circle_yml" : null,
+          "messages" : [ {
+            "type" : "warning",
+            "message" : "It looks like we couldn't infer test settings for your project. Refer to our \"<a href='https://circleci.com/docs/manually'>Setting your build up manually</a>\" document to get started. It should only take a few minutes."
+          } ],
+          "is_first_green_build" : false,
+          "job_name" : null,
+          "start_time" : "2016-02-11T17:57:08.201Z",
+          "canceler" : null,
+          "outcome" : "no_tests",
+          "vcs_url" : "https://github.com/sparkbox/mina-circle",
+          "author_name" : null,
+          "node" : null,
+          "queued_at" : "2016-02-11T17:57:07.747Z",
+          "canceled" : false,
+          "author_email" : null
+        } ]
+    http_version: 
+  recorded_at: Thu, 11 Feb 2016 23:41:53 GMT
+recorded_with: VCR 3.0.1
