@@ -1,0 +1,57 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://circleci.com/api/v1/project/sparkbox/this-project-does-not-exist/6/artifacts?circle-token=<CIRCLE_TOKEN>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - text/plain; charset=utf-8
+      Date:
+      - Thu, 11 Feb 2016 23:41:52 GMT
+      Server:
+      - nginx
+      Set-Cookie:
+      - ab_test_user_seed=0.2827377044595778;Expires=Sat, 11 Feb 2017 23:41:52 +0000;Path=/;Secure
+      - ring-session=pMFVyjoOwxaphCAddmht6cfM06sCxg076LvrbHD0xe%2FtX1LeWwDi4tt2JM%2BPE%2FSL7jyM1GxUI5Ng5xCf2oU4zvndpDQJx9JARplVN%2FR20q%2BqRYC6DeKwNuumDl8RKuOjF1r74569wwi8U5UsDq7PiKO72A8D7DxXhuosXIEFNX97hQjCVAKi2om3OmJkTJQpthX5EqvFDCY2mWhz%2FNKPm9iTUu65NPK6jO68r4h9wBg%3D--Vjuw2bzg2Gl332S9UsHIfslcddeEsXrH2UTaAaGdmLs%3D;Path=/;HttpOnly;Expires=Sat,
+        11 Feb 2017 20:01:54 +0000;Max-Age=31536000;Secure
+      X-Circleci-Identity:
+      - i-dd522b5d
+      X-Circleci-Request-Id:
+      - b3d09d2a-c294-4a38-9bb7-f7f54966e1a6
+      X-Frame-Options:
+      - DENY
+      X-Route:
+      - "/api/v1/project/:username/:repo/:build_num/artifacts"
+      - ":build_num"
+      - "\\d+"
+      Content-Length:
+      - '123'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |-
+        // Hello human (for machine readable JSON, use the "application/json" Accept header)
+
+        {
+          "message" : "Project not found"
+        }
+    http_version: 
+  recorded_at: Thu, 11 Feb 2016 23:41:53 GMT
+recorded_with: VCR 3.0.1
