@@ -31,7 +31,7 @@ class CircleCI
   end
 
   def self.token
-    @token ||= get_token
+    @@token ||= get_token
   end
 
   def self.get_token
