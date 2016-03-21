@@ -83,7 +83,7 @@ To deploy a specific branch, run `mina deploy branch=your_feature_branch`
 
 ### Continuous Deployment
 
-For successful builds, CircleCI has an optional deployment step which it can run after it builds your artifacts.
+For successful builds, CircleCI has an optional deployment step which it can run after it builds your artifacts. This example will result in CircleCI executing a deploy each time it successfully builds the `master` branch.
 
     # circle.yml
     deployment:
@@ -92,4 +92,14 @@ For successful builds, CircleCI has an optional deployment step which it can run
         commands:
           - mina deploy
 
-This will result in CircleCI executing a deploy each time it successfully builds the `master` branch. Depending on how you have Mina configured, you may want to investigate [mina-multistage](https://github.com/endoze/mina-multistage) to target specific environments for this task.
+#### API Permissions
+
+Once this runs, mina-circle will be calling back into CircleCI's API and will require a token. Since it's running on their servers, not your own computer, you'll need to supply one to the project configuration on CircleCI. In your project's settings, find `API permissions` under `Permissions`. Enter a value for `Token label` and click `Create token`, Copy the token string and find the `Environment variables` section under `Tweaks`. That will present you with a form to add a name and value for the variable. The name of the variable should be `MINA_CIRCLE_TOKEN`, and the value is the token you copied in the previous step.
+
+#### SSH Access
+
+Now running remotely, CircleCI will need a private key which works to access yoru server. [Permissions and access during deployment](https://circleci.com/docs/permissions-and-access-during-deployment) describes setting this up on both CircleCI and your server.
+
+#### Not Enough?
+
+Depending on how you have Mina configured, you may want to investigate [mina-multistage](https://github.com/endoze/mina-multistage) to target specific environments for this task. Also, CircleCI's deployment phase offers many more features than what this simple example covers. Read [this section](https://circleci.com/docs/configuration#deployment) of their configuration guide to learn more about how to use it.
