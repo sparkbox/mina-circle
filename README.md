@@ -38,6 +38,7 @@ If the plugin cannot find an API token the deploy will fail.
 Once the gem is installed, require it into Mina's `config/deploy.rb` and set
 each configuration option. They are all required.
 
+    # config/deploy.rb
     require 'mina-circle'
 
     # Basic Mina requirements probably live here...
@@ -63,6 +64,7 @@ each configuration option. They are all required.
 ### CircleCI Configuration - circle.yml
 Change name of the asset and build path.  (gruntfile, gulp, etc)
 
+    # circle.yml
     general:
       artifacts:
         - "~/artifact_example.tar.gz"
@@ -90,4 +92,4 @@ For successful builds, CircleCI has an optional deployment step which it can run
         commands:
           - mina deploy
 
-This will result in CircleCI executing a deploy each time it successfully builds the `master` branch. Depending on how you have Mina configured, you may want to investigate [mina-multistage](https://github.com/endoze/mina-multistage) to specify multiple environments
+This will result in CircleCI executing a deploy each time it successfully builds the `master` branch. Depending on how you have Mina configured, you may want to investigate [mina-multistage](https://github.com/endoze/mina-multistage) to target specific environments for this task.
