@@ -73,8 +73,21 @@ Change name of the asset and build path.  (gruntfile, gulp, etc)
         - ./static/node_modules/.bin/grunt ci --gruntfile static/Gruntfile.coffee
         - tar --exclude=".git" --exclude="node_modules" -czvf ~/artifact_example.tar.gz .
 
-# Running
+## Running
 
 To deploy you'll run `mina deploy`
 
 To deploy a specific branch, run `mina deploy branch=your_feature_branch`
+
+### Continuous Deployment
+
+For successful builds, CircleCI has an optional deployment step which it can run after it builds your artifacts.
+
+    # circle.yml
+    deployment:
+      test:
+        branch: master
+        commands:
+          - mina deploy
+
+This will result in CircleCI executing a deploy each time it successfully builds the `master` branch. Depending on how you have Mina configured, you may want to investigate [mina-multistage](https://github.com/endoze/mina-multistage) to specify multiple environments
