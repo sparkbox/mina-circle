@@ -94,11 +94,16 @@ For successful builds, CircleCI has an optional deployment step which it can run
 
 #### API Permissions
 
-Once this runs, mina-circle will be calling back into CircleCI's API and will require a token. Since it's running on their servers, not your own computer, you'll need to supply one to the project configuration on CircleCI. In your project's settings, find `API permissions` under `Permissions`. Enter a value for `Token label` and click `Create token`, Copy the token string and find the `Environment variables` section under `Tweaks`. That will present you with a form to add a name and value for the variable. The name of the variable should be `MINA_CIRCLE_TOKEN`, and the value is the token you copied in the previous step.
+Once this runs, mina-circle will be calling back into CircleCI's API and will require a token. Since it's running on their servers, not your own computer, you'll need to supply one to the project configuration on CircleCI. In your CircleCI project's settings:
+- Click `API permissions` under `Permissions`
+- Enter a value for `Token label` and click `Create token`
+- Copy the token string
+- Click the `Environment variables` section under `Tweaks`
+- Enter `MINA_CIRCLE_TOKEN` for the variable name, and the value is the token you copied in the previous step
 
 #### SSH Access
 
-Now running remotely, CircleCI will need a private key which works to access yoru server. [Permissions and access during deployment](https://circleci.com/docs/permissions-and-access-during-deployment) describes setting this up on both CircleCI and your server.
+Now running remotely, CircleCI will need a private key which works to access your server. [Permissions and access during deployment](https://circleci.com/docs/permissions-and-access-during-deployment) describes setting this up on both CircleCI and your server.
 
 #### Not Enough?
 
