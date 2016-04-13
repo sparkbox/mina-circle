@@ -38,6 +38,7 @@ If the plugin cannot find an API token the deploy will fail.
 Once the gem is installed, require it into Mina's `config/deploy.rb` and set
 each configuration option. They are all required.
 
+    # config/deploy.rb
     require 'mina-circle'
 
     # Basic Mina requirements probably live here...
@@ -63,6 +64,7 @@ each configuration option. They are all required.
 ### CircleCI Configuration - circle.yml
 Change name of the asset and build path.  (gruntfile, gulp, etc)
 
+    # circle.yml
     general:
       artifacts:
         - "~/artifact_example.tar.gz"
@@ -73,8 +75,36 @@ Change name of the asset and build path.  (gruntfile, gulp, etc)
         - ./static/node_modules/.bin/grunt ci --gruntfile static/Gruntfile.coffee
         - tar --exclude=".git" --exclude="node_modules" -czvf ~/artifact_example.tar.gz .
 
-# Running
+## Running
 
 To deploy you'll run `mina deploy`
 
 To deploy a specific branch, run `mina deploy branch=your_feature_branch`
+
+### Continuous Deployment
+
+For successful builds, CircleCI has an optional deployment step which it can run after it builds your artifacts. This example will result in CircleCI executing a deploy each time it successfully builds the `master` branch.
+
+    # circle.yml
+    deployment:
+      test:
+        branch: master
+        commands:
+          - mina deploy
+
+#### API Permissions
+
+Once this runs, mina-circle will be calling back into CircleCI's API and will require a token. Since it's running on their servers, not your own computer, you'll need to supply one to the project configuration on CircleCI. In your CircleCI project's settings:
+- Click `API permissions` under `Permissions`
+- Enter a value for `Token label` and click `Create token`
+- Copy the token string
+- Click the `Environment variables` section under `Tweaks`
+- Enter `MINA_CIRCLE_TOKEN` for the variable name, and the value is the token you copied in the previous step
+
+#### SSH Access
+
+Now running remotely, CircleCI will need a private key which works to access your server. [Permissions and access during deployment](https://circleci.com/docs/permissions-and-access-during-deployment) describes setting this up on both CircleCI and your server.
+
+#### Not Enough?
+
+Depending on how you have Mina configured, you may want to investigate [mina-multistage](https://github.com/endoze/mina-multistage) to target specific environments for this task. Also, CircleCI's deployment phase offers many more features than what this simple example covers. Read [this section](https://circleci.com/docs/configuration#deployment) of their configuration guide to learn more about how to use it.
