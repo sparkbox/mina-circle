@@ -22,10 +22,13 @@ namespace :circleci do
 
   desc 'Downloads and explodes the archive file containing the build'
   task :deploy do
-    puts "[mina-circle] Fetching: #{circle_artifact}"
-    queue "curl -o #{circle_artifact} #{build_url}"
-    queue "#{circle_explode_command} #{circle_artifact}"
-    queue "rm #{circle_artifact}"
+    if circle_ci.artifact_present?
+      puts "[mina-circle] Fetching: #{circle_artifact}"
+      queue "curl -o #{circle_artifact} #{circle_ci.latest_artifact.url}"
+      queue "#{circle_explode_command} #{circle_artifact}"
+      queue "rm #{circle_artifact}"
+    else
+      puts "No artifacts found for the latest build of #{branch}"
+    end
   end
 end
-

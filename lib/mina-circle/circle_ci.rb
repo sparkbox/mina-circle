@@ -9,13 +9,16 @@ class CircleCI
     @branch = branch
   end
 
-  def builds
-    get("tree/#{branch}").collect { |build_hash| Build.new(build_hash) }
+  def latest_artifact
+    latest_build = Build.new(get("tree/#{branch}").first)
+    Artifact.new(get("#{latest_build.build_num}/artifacts").first)
   end
 
-  def artifacts(build)
-    get("#{build.build_num}/artifacts").collect { |artifact_hash| Artifact.new(artifact_hash) }
+  def artifact_present?
+    !latest_artifact.nil?
   end
+
+  private
 
   def get(path)
     url = build_url path
@@ -59,4 +62,3 @@ class CircleCI
     end
   end
 end
-
