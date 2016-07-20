@@ -60,4 +60,3 @@ class CircleCI
     end
   end
 end
-
