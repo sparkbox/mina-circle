@@ -14,6 +14,7 @@ class CircleCI
   end
 
   def artifacts(build)
+    puts "Build: #{build.build_num}"
     get("#{build.build_num}/artifacts").collect { |artifact_hash| Artifact.new(artifact_hash) }
   end
 
