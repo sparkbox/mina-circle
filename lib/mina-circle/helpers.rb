@@ -1,4 +1,3 @@
-require 'pp'
 module MinaCircle
   module Helpers
     def build_url
@@ -6,12 +5,12 @@ module MinaCircle
       artifacts = circle_ci.artifacts(latest_build).select { |artifact|
         artifact.filename == circle_artifact
       }
-      raise "No artifacts found for build: #{latest_build.build_num} on #{branch}" if artifacts.empty?
+      raise "No artifacts found for build: #{latest_build.build_num} on #{branch}. #{latest_build.status}" if artifacts.empty?
       artifacts.first.url
     rescue Exception => e
       puts e.message
+      puts ""
       puts "Review your build at to ensure artifacts are being captured as described in https://circleci.com/docs/build-artifacts/"
-      exit
     end
 
     def circle_ci
