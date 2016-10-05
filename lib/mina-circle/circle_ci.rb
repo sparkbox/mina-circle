@@ -15,11 +15,9 @@ class CircleCI
 
   def artifacts(build)
     puts "Build: #{build.build_num}"
-    begin
-      return get("#{build.build_num}/artifacts").collect { |artifact_hash| Artifact.new(artifact_hash) }
-    rescue
-      puts "No artifacts found for build #{build.build_num} on #{@branch}"
-    end
+    get("#{build.build_num}/artifacts").collect { |artifact_hash| Artifact.new(artifact_hash) }
+  rescue
+    puts "No artifacts found for build #{build.build_num} on #{@branch}"
   end
 
   def get(path)
