@@ -2,7 +2,7 @@ require 'rake/testtask'
 require './lib/mina-circle/version'
 
 Rake::TestTask.new do |t|
-    t.pattern = 'test/**/*.rb'
+    t.pattern = 'test/**/test_*.rb'
 end
 
 namespace :gem do
@@ -19,4 +19,3 @@ namespace :gem do
   end
 
 end
-
