@@ -1,8 +1,10 @@
 class CircleCI
   def self.artifact_url
-    project.artifacts.detect { |artifact|
-      artifact.filename == circle_artifact
-    }.url
+    artifact = project.artifacts.detect { |a|
+      a.filename == circle_artifact
+    }
+    raise 'Missing or invalid URL from CircleCI' unless artifact.contains_valid_url?
+    artifact.url.to_s
   end
 
   def self.project

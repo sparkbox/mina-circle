@@ -1,5 +1,5 @@
 class CircleCI::Project
-  attr_accessor :artifacts
+  attr_writer :artifacts
   attr_reader :vcs_type, :organization, :name, :branch
   def initialize(organization:, name:, branch:, vcs_type: 'github')
     @organization = organization
