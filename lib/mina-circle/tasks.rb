@@ -18,14 +18,19 @@ extend MinaCircle::Helpers
 # ### circle_explode_command
 # Command with options for decompressing the artifact archive
 
-namespace :circleci do
+set :artifact_source, :CircleCI
 
+namespace :mina_circle do
   desc 'Downloads and explodes the archive file containing the build'
   task :deploy do
     puts "[mina-circle] Fetching: #{circle_artifact}"
-    queue "curl -o #{circle_artifact} #{build_url}"
-    queue "#{circle_explode_command} #{circle_artifact}"
-    queue "rm #{circle_artifact}"
+    begin
+      queue "curl -o #{circle_artifact} #{artifact_url}"
+      queue "#{circle_explode_command} #{circle_artifact}"
+      queue "rm #{circle_artifact}"
+    rescue MinaCircleError => e
+      puts e.message
+      raise e
+    end
   end
 end
-
