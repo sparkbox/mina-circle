@@ -1,25 +1,17 @@
 class CircleCI
-  def self.artifact_url
+  def self.artifact_url(settings = {})
+    project = CircleCI::Project.new(
+      organization: settings[:circleci_user],
+      name: settings[:circleci_project],
+      branch: settings[:branch]
+    )
+
     artifact = project.artifacts.detect { |a|
-      a.filename == circle_artifact
+      a.filename == settings[:circleci_artifact]
     }
     raise 'Missing or invalid URL from CircleCI' unless artifact.contains_valid_url?
-    artifact.url.to_s
-  end
-
-  def self.project
-    @@project ||= CircleCI::Project.new organization: circle_user, project: circle_project, branch: branch
-  end
-
-  def self.project=(project)
-    @@project = project
-  end
-
-  def self.circle_artifact=(circle_artifact)
-    @@circle_artifact = circle_artifact
-  end
-
-  def self.circle_artifact
-    @@circle_artifact ||= fetch(:circle_artifact)
+    base_url = artifact.url
+    base_url.query = URI.encode_www_form({ 'circle-token' => CircleCI::Client.instance.api_token })
+    base_url.to_s
   end
 end
