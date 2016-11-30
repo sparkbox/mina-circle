@@ -6,16 +6,16 @@ extend MinaCircle::Helpers
 #
 # ## Settings
 #
-# ### circle_user
+# ### circleci_user
 # user name
 #
-# ### circle_project
+# ### circleci_project
 # Name by which CircleCI knows your project
 #
-# ### circle_artifact
+# ### circleci_artifact
 # Name CircleCI calls your build archive
 #
-# ### circle_explode_command
+# ### circleci_explode_command
 # Command with options for decompressing the artifact archive
 
 set :artifact_source, :CircleCI
@@ -23,14 +23,9 @@ set :artifact_source, :CircleCI
 namespace :mina_circle do
   desc 'Downloads and explodes the archive file containing the build'
   task :deploy do
-    puts "[mina-circle] Fetching: #{circle_artifact}"
-    begin
-      queue "curl -o #{circle_artifact} #{artifact_url}"
-      queue "#{circle_explode_command} #{circle_artifact}"
-      queue "rm #{circle_artifact}"
-    rescue MinaCircleError => e
-      puts e.message
-      raise e
-    end
+    puts "[mina-circle] Fetching: #{circleci_artifact}"
+    queue echo_cmd("curl -o #{circleci_artifact} #{artifact_url}")
+    queue echo_cmd("#{circleci_explode_command} #{circleci_artifact}")
+    queue echo_cmd("rm #{circleci_artifact}")
   end
 end

@@ -16,14 +16,12 @@ class CircleCI::Client
     uri.query = URI.encode_www_form(params) unless params.empty?
     request = Net::HTTP::Get.new uri
     request['Accept'] = 'application/json'
-    request['Authorization'] = "Basic #{Base64.encode64(api_token)}"
+    request['Authorization'] = "Basic #{Base64.encode64(api_token).chomp}"
     response = Net::HTTP.start uri.host, uri.port, use_ssl: true do |http|
       http.request request
     end
     JSON.parse response.body
   end
-
-  private
 
   def api_token
     [
@@ -32,6 +30,8 @@ class CircleCI::Client
       system_token
     ].compact.first
   end
+
+  private
 
   def system_token
     File.exist?(CONFIG_FILE_PATH) ? YAML.load_file(CONFIG_FILE_PATH)['token'] : nil
