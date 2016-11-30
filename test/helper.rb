@@ -1,0 +1,5 @@
+require 'minitest/autorun'
+require './lib/mina-circle/circle-ci/circle_ci'
+require './lib/mina-circle/circle-ci/client'
+require './lib/mina-circle/circle-ci/artifact'
+require './lib/mina-circle/circle-ci/project'
