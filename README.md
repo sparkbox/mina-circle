@@ -44,10 +44,10 @@ each configuration option. They are all required.
     # Basic Mina requirements probably live here...
 
     set :branch, ENV['branch'] || 'master' # Your specifc git branch to deploy
-    set :circle_user, 'username' # Your Username with CircleCI
-    set :circle_project, 'project_name' # Name by which CircleCI knows your project
-    set :circle_artifact, 'artifact_example.tar.gz' # Name that you configured CircleCI to call your build archives
-    set :circle_explode_command, 'tar -mzxf', # Command with options for decompressing the artifact archive
+    set :circleci_user, 'username' # Your Username with CircleCI
+    set :circleci_project, 'project_name' # Name by which CircleCI knows your project
+    set :circleci_artifact, 'artifact_example.tar.gz' # Name that you configured CircleCI to call your build archives
+    set :circleci_explode_command, 'tar -mzxf', # Command with options for decompressing the artifact archive
 
     # Other configuration probably lives here...
 
