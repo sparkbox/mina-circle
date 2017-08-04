@@ -1,5 +1,3 @@
-extend MinaCircle::Helpers
-# # Mina CircleCI Build Artifact Deployment
 # Deploy builds from CircleCI's artifact library.
 #
 #     require 'mina-circle'
@@ -23,7 +21,21 @@ set :artifact_source, :CircleCI
 namespace :mina_circle do
   desc 'Downloads and explodes the archive file containing the build'
   task :deploy do
-    puts "[mina-circle] Fetching: #{circleci_artifact}"
+
+    if !circleci_artifact
+      print_error "[mina-circle] You must specify a `circleci_artifact`"
+      die
+    end
+    if !circleci_user
+      print_error "[mina-circle] You must specify a `circleci_user`"
+      die
+    end
+    if !circleci_project
+      print_error "[mina-circle] You must specify a `circleci_project`"
+      die
+    end
+
+    print_str "[mina-circle] Fetching: #{circleci_artifact}"
     queue echo_cmd("curl -o #{circleci_artifact} #{artifact_url}")
     queue echo_cmd("#{circleci_explode_command} #{circleci_artifact}")
     queue echo_cmd("rm #{circleci_artifact}")

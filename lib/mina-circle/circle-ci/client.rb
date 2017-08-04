@@ -14,6 +14,7 @@ class CircleCI::Client
   def get(path, params = {})
     uri = URI("#{BASE_URI}/#{path}")
     uri.query = URI.encode_www_form(params) unless params.empty?
+    print_str "Sending URL: #{uri}"
     request = Net::HTTP::Get.new uri
     request['Accept'] = 'application/json'
     request['Authorization'] = "Basic #{Base64.encode64(api_token).chomp}"
