@@ -23,16 +23,19 @@ namespace :mina_circle do
   task :deploy do
 
     if !circleci_artifact
-      abort "[mina-circle] You must specify a `circleci_artifact`"
+      print_error "[mina-circle] You must specify a `circleci_artifact`"
+      die
     end
     if !circleci_user
-      abort "[mina-circle] You must specify a `circleci_user`"
+      print_error "[mina-circle] You must specify a `circleci_user`"
+      die
     end
     if !circleci_project
-      abort "[mina-circle] You must specify a `circleci_project`"
+      print_error "[mina-circle] You must specify a `circleci_project`"
+      die
     end
 
-    puts "[mina-circle] Fetching: #{circleci_artifact}"
+    print_str "[mina-circle] Fetching: #{circleci_artifact}"
     queue echo_cmd("curl -o #{circleci_artifact} #{artifact_url}")
     queue echo_cmd("#{circleci_explode_command} #{circleci_artifact}")
     queue echo_cmd("rm #{circleci_artifact}")
