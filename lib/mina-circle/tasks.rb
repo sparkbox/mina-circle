@@ -1,3 +1,4 @@
+extend MinaCircle::Helpers
 # Deploy builds from CircleCI's artifact library.
 #
 #     require 'mina-circle'
