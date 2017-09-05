@@ -5,6 +5,7 @@ class CircleCI::Project
     @organization = organization
     @name = name
     @vcs_type = vcs_type
+    @branch = branch
   end
 
   def artifacts
@@ -23,7 +24,7 @@ class CircleCI::Project
   private
 
   def fetch_artifacts
-    artifact_hashes = CircleCI::Client.instance.get "#{api_path}/latest/artifacts", filter: 'successful', branch: branch
+    artifact_hashes = CircleCI::Client.instance.get "#{api_path}/latest/artifacts", filter: 'successful', branch: branch ? branch : 'master'
     artifact_hashes.collect { |artifact_hash|
       CircleCI::Artifact.new artifact_hash
     }

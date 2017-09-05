@@ -13,15 +13,27 @@ class CircleCI::Client
 
   def get(path, params = {})
     uri = URI("#{BASE_URI}/#{path}")
+    params['circle-token'] = api_token
     uri.query = URI.encode_www_form(params) unless params.empty?
     puts "Sending URL: #{uri}"
     request = Net::HTTP::Get.new uri
     request['Accept'] = 'application/json'
-    request['Authorization'] = "Basic #{Base64.encode64(api_token).chomp}"
     response = Net::HTTP.start uri.host, uri.port, use_ssl: true do |http|
       http.request request
     end
-    JSON.parse response.body
+    return_object = JSON.parse response.body
+
+    JSON.pretty_generate return_object
+
+    if return_object.instance_of? Object
+      if return_object['message']
+        puts return_object['message']
+        puts "Check your branch and/or build on CircleCI..."
+        exit
+      end
+    end
+
+    return_object
   end
 
   def api_token
