@@ -5,6 +5,8 @@
 A plugin for [Mina](https://github.com/mina-deploy/mina) to deploy pre-built
 artifacts from CircleCI.
 
+Current Version 1.3.5
+
 ## Why?
 
 Modern web applications depend on a lot of tools to prepare their static
