@@ -5,7 +5,7 @@
 A plugin for [Mina](https://github.com/mina-deploy/mina) to deploy pre-built
 artifacts from CircleCI.
 
-Current Version 1.3.5
+Current Version 1.4.0 - Now supports circle ci version 2.0 workflows!
 
 ## Why?
 

@@ -24,7 +24,18 @@ class CircleCI::Project
   private
 
   def fetch_artifacts
-    artifact_hashes = CircleCI::Client.instance.get "#{api_path}/latest/artifacts", filter: 'successful', branch: branch ? branch : 'master'
+    # To support Circle 2.0
+    build_info = CircleCI::Client.instance.get "#{api_path}", filter: 'successful', branch: branch ? branch : 'master', has_artifacts: true
+
+    build_num = 'latest' # circle version 1.0
+
+    if build_info.first['previous_successful_build']['build_num']
+      build_num = build_info.first['previous_successful_build']['build_num']
+    end
+
+    puts "Using Build: #{build_num}"
+
+    artifact_hashes = CircleCI::Client.instance.get "#{api_path}/#{build_num}/artifacts", filter: 'successful', branch: branch ? branch : 'master'
     artifact_hashes.collect { |artifact_hash|
       CircleCI::Artifact.new artifact_hash
     }
