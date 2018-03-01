@@ -5,7 +5,10 @@
 A plugin for [Mina](https://github.com/mina-deploy/mina) to deploy pre-built
 artifacts from CircleCI.
 
-Current Version 1.4.0 - Now supports circle ci version 2.0 workflows!
+
+[![Gem](https://img.shields.io/gem/v/mina-circle.svg)](https://github.com/sparkbox/mina-circle)
+
+Now supports CircleCI version 2.0 Workflows!
 
 ## Why?
 
