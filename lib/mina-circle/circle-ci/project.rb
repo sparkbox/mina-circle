@@ -40,8 +40,8 @@ class CircleCI::Project
   def fetch_artifacts
     # To support Circle 2.0
     builds = CircleCI::Client.instance.get "#{build_path}", filter: 'successful', has_artifacts: true
-    builds = builds.sort { |a, b| b.build_num - a.build_num }
-    build_num = builds.first.build_num
+    builds = builds.sort { |a, b| b['build_num'] - a['build_num'] }
+    build_num = builds.first['build_num']
 
     puts "Using Build: #{build_num}"
 
