@@ -1,6 +1,7 @@
 require 'mina-circle/version'
 require 'mina-circle/helpers'
 require 'mina-circle/tasks'
+require 'mina-circle/curl_command'
 require 'mina-circle/circle-ci/circle_ci'
 require 'mina-circle/circle-ci/client'
 require 'mina-circle/circle-ci/artifact'

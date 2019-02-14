@@ -1,7 +1,7 @@
 require 'uri'
 module MinaCircle
   module Helpers
-    def artifact_url
+    def artifact_fetch_command
       project = CircleCI::Project.new(
         organization: settings[:circleci_user],
         name: settings[:circleci_project]
@@ -17,7 +17,9 @@ module MinaCircle
       build_artifacts = successful_for_job.last.artifacts
 
       deploy_artifact = build_artifacts.find { |artifact| artifact.filename == settings[:circleci_artifact] }
-      deploy_artifact.url
+      api_token = CircleCI::Client.instance.api_token
+      curl = CurlCommand.new deploy_artifact.url, settings[:circleci_artifact], api_token
+      curl.to_s
     rescue RuntimeError => e
       puts "Unable to determine url for deployment artifact"
       puts e.message

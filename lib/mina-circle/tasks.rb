@@ -35,7 +35,7 @@ namespace :mina_circle do
     end
 
     print_str "[mina-circle] Fetching: #{circleci_artifact}"
-    queue echo_cmd("curl -o #{circleci_artifact} #{artifact_url}")
+    queue echo_cmd(artifact_fetch_command)
     queue echo_cmd("#{circleci_explode_command} #{circleci_artifact}")
     queue echo_cmd("rm #{circleci_artifact}")
   end

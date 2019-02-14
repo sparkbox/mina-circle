@@ -1,4 +1,5 @@
 require 'minitest/autorun'
+require './lib/mina-circle/curl_command'
 require './lib/mina-circle/circle-ci/circle_ci'
 require './lib/mina-circle/circle-ci/client'
 require './lib/mina-circle/circle-ci/artifact'
