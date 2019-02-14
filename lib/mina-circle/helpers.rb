@@ -16,7 +16,8 @@ module MinaCircle
 
       build_artifacts = successful_for_job.last.artifacts
 
-      build_artifacts.find { |artifact| artifact.filename == settings[:circleci_artifact] }
+      deploy_artifact = build_artifacts.find { |artifact| artifact.filename == settings[:circleci_artifact] }
+      deploy_artifact.url
     rescue RuntimeError => e
       puts "Unable to determine url for deployment artifact"
       puts e.message
