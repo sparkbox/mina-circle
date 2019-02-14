@@ -17,8 +17,6 @@ extend MinaCircle::Helpers
 # ### circleci_explode_command
 # Command with options for decompressing the artifact archive
 
-set :artifact_source, :CircleCI
-
 namespace :mina_circle do
   desc 'Downloads and explodes the archive file containing the build'
   task :deploy do

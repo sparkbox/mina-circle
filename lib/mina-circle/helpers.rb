@@ -2,11 +2,21 @@ require 'uri'
 module MinaCircle
   module Helpers
     def artifact_url
-      options = settings.select { |k,v|
-        k.to_s.start_with? artifact_source.to_s.downcase or
-          options_whitelist.include? k
-      }
-      Module.const_get(artifact_source.to_s).artifact_url(options)
+      project = CircleCI::Project.new(
+        organization: settings[:circleci_user],
+        name: settings[:circleci_project]
+      )
+
+      recent_builds = project.recent_builds settings[:branch]
+
+      successful_for_job =
+        recent_builds
+          .select { |build| build.status == 'success' && build.job_name == settings[:circleci_job_name] }
+          .sort { |a, b| a.build_number <=> b.build_number }
+
+      build_artifacts = successful_for_job.last.artifacts
+
+      build_artifacts.find { |artifact| artifact.filename == settings[:circleci_artifact] }
     rescue RuntimeError => e
       puts "Unable to determine url for deployment artifact"
       puts e.message

@@ -1,0 +1,13 @@
+# -*- restclient -*-
+
+:circleci-token := <<
+(with-temp-buffer
+	(insert-file-contents "~/.mina-circle.yml")
+	(base64-encode-string (string-trim (nth 1 (split-string (buffer-string) ":" t)))))
+#
+
+:project-name = preschool-promise-application
+
+GET https://circleci.com/api/v1.1/project/github/sparkbox/:project-name/tree/master
+Authorization: Basic :circleci-token
+Accept: application/json
