@@ -52,7 +52,8 @@ each configuration option. They are all required.
     set :circleci_user, 'username' # Your Username with CircleCI
     set :circleci_project, 'project_name' # Name by which CircleCI knows your project
     set :circleci_artifact, 'artifact_example.tar.gz' # Name that you configured CircleCI to call your build archives
-    set :circleci_explode_command, 'tar -mzxf', # Command with options for decompressing the artifact archive
+    set :circleci_explode_command, 'tar -mzxf' # Command with options for decompressing the artifact archive
+    set :circleci_job_name, 'build' # Name of workflow job
 
     # Other configuration probably lives here...
 
