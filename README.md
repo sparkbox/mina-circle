@@ -8,7 +8,9 @@ artifacts from CircleCI.
 
 [![Gem](https://img.shields.io/gem/v/mina-circle.svg)](https://github.com/sparkbox/mina-circle)
 
-Now supports CircleCI version 2.0 Workflows!
+Now supports CircleCI version 2.0 Workflows! If your CircleCI 2.0 build has only one job it likely
+does not use workflows. If you find that your builds do not use workflows stick with version 1.4.2
+of this gem.
 
 ## Why?
 
