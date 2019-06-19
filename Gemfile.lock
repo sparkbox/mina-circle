@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    mina-circle (2.0.0)
+    mina-circle (2.0.1)
       mina (~> 0.3, >= 0.3.0)
 
 GEM
@@ -23,4 +23,4 @@ DEPENDENCIES
   rake (~> 10.4, >= 10.4.0)
 
 BUNDLED WITH
-   1.16.2
+   1.17.2

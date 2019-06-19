@@ -14,6 +14,11 @@ module MinaCircle
           .select { |build| build.status == 'success' && build.job_name == settings[:circleci_job_name] }
           .sort { |a, b| a.build_number <=> b.build_number }
 
+      if successful_for_job.empty?
+        STDERR.puts 'No successful builds for this branch and job name'
+        exit 1
+      end
+
       build_artifacts = successful_for_job.last.artifacts
 
       deploy_artifact = build_artifacts.find { |artifact| artifact.filename == settings[:circleci_artifact] }
