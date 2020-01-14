@@ -9,6 +9,10 @@ class CircleCI::Client
   include Singleton
   BASE_URI = 'https://circleci.com/api/v1.1'
   CONFIG_FILE_PATH = File.join(Dir.home, '.mina-circle.yml')
+  unless File.exists?(CONFIG_FILE_PATH)
+    puts "Please follow the setup steps (https://github.com/sparkbox/mina-circle#setup) and create a token."
+    exit
+  end
   attr_writer :api_token
 
   def get(path, params = {})
