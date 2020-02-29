@@ -13,6 +13,6 @@ Gem::Specification.new do |s|
   s.homepage = 'https://github.com/sparkbox/mina-circle'
 
   s.add_runtime_dependency 'mina', '~> 0.3', '>= 0.3.0'
-  s.add_development_dependency 'rake', '~> 10.4', '>= 10.4.0'
+  s.add_development_dependency 'rake', '>= 10.4.0', '~> 13.0'
   s.add_development_dependency 'minitest', '~> 5.8', '>= 5.8.0'
 end
