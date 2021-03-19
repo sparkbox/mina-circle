@@ -1,7 +1,7 @@
 require 'uri'
 module MinaCircle
   module Helpers
-    def artifact_fetch_command
+    def artifact_fetch_command(settings)
       project = CircleCI::Project.new(
         organization: settings[:circleci_user],
         name: settings[:circleci_project]
